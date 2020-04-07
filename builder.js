@@ -52,7 +52,7 @@ const build = async (mode) => {
   // opening the source file
   const sourceParts = fs.readFileSync("./article.md", "utf8").split("---");
   const header = yaml(sourceParts[0]);
-  let body = sourceParts[1];
+  let body = sourceParts.slice(1,).join('---'); // if somebody uses --- in article body
 
   // setting up external libraries and styles set in the header
   let libLinks = "";
